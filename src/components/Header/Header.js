@@ -1,11 +1,13 @@
 import React from "react";
 import { Autocomplete } from "@react-google-maps/api";
 import { AppBar, Toolbar, Typography, InputBase, Box } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import styled from "./styles";
+import Search from "@mui/icons-material/Search";
 
-export const Header = () => {
+import styled from "./styles.js";
+
+export const Header = ({ onPlaceChanged, onLoad }) => {
   const classes = styled();
+
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
@@ -16,13 +18,13 @@ export const Header = () => {
           <Typography variant="h6" className={classes.title}>
             Explore new places
           </Typography>
-          {/* <Autocomplete> */}
+          {/* <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}> */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <Search />
             </div>
             <InputBase
-              placeholder="Search..."
+              placeholder="Search…"
               classes={{ root: classes.inputRoot, input: classes.inputInput }}
             />
           </div>
